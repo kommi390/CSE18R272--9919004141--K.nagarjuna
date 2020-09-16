@@ -1,0 +1,393 @@
+
+     NAME:KOMMIREDDY NAGARJUNA REDDY
+      REG NO:9919004141
+      DATE:16-09-2020
+
+
+
+
+
+
+
+
+1)write  a java program to implement inheritance using super keyword.
+Program:
+
+class Box {
+    private double width ;
+    private double height ;
+    private double depth ;
+Box ( double w , double h , double l) {
+    width = w;
+    height = h ;
+    depth = l;
+}
+Box () {
+    width = -1;
+    height = -1;
+    depth = -1;
+}
+double volume () {
+    return width * height * depth ;
+}
+}
+class BoxWeight extends Box {
+    double weight ; // weight of box
+    BoxWeight ( double w , double h , double d , double m) {
+        super (w , h , d ); // call superclass constructor
+        weight = m;
+    }
+    BoxWeight (){
+        super ();
+        weight = -1;
+
+
+}
+}
+public class Main
+{
+public static void main(String[] args) {
+BoxWeight b1 = new BoxWeight(3.6,4.1,2.9,9.8);
+BoxWeight b2 = new BoxWeight();
+double v ;
+        v = b1 . volume ();
+        System . out . println (" Volume of mybox1 is " + v );
+        v = b2 . volume ();
+        System . out . println (" Volume of mybox3 is " + v );
+}
+}
+output;
+ Volume of mybox1 is 42.803999999999995                                                                                      
+ Volume of mybox3 is -1.0 
+
+2. Create a class called Date that includes three pieces of information as instancevariables—a month (typeint), a day (typeint) and a year (typeint). Your classshould have a constructor that initializes the three instance variables andassumes that the values provided are correct. Provide a set and a get method foreach instance variable. Provide a method displayDate that displays the month,day and year separated by forward slashes(/). Write a test application namedDateTest that demonstrates cl
+Program:
+class Date {
+    int  day ;
+    int month ;
+    int year ;
+    public Date ( int d , int m , int y) {
+        if(m<13 && d<31){
+            month = m; day=d; year=y;
+        }
+        else{
+            System.out.println("incorrect date");
+        }
+            
+        }
+    void setMonth(int m){
+        if(m<13)
+            month=m;
+        else 
+            System.out.println("incorrect format");
+    }
+    void setDay(int d){
+        if(d<31)
+            day=d;
+        else 
+            System.out.println("incorrect format");
+    }
+    void setYear(int y){
+        if((y/10000)==0)
+            year=y;
+        else
+            System.out.println("incorrect format");
+    }
+    int getMonth(){
+        return month;
+    }
+    int getDay(){
+        return day;
+    }
+    int getYear(){
+        return year;
+    }
+    void display () {
+        System.out.println("The date is " + day +"/" + month + "/" + year);
+    }
+
+
+}
+public class Main
+{
+public static void main(String[] args) {
+Date d1 = new Date(7,9,2021);
+d1.display();
+d1.setDay(7);
+d1.setMonth(9);
+d1.setYear(2021);
+
+
+
+        
+        
+}
+}
+output;The date is 7/9/2021
+
+
+3. Create class SavingsAccount. Usea static variable annualInterestRate to store theannual interest rate for all account holders. Each object of the class contains aprivate instance variable savingsBalance indicating the amount the savercurrently has ondeposit. Provide method calculateMonthlyInterest to calculatethe monthly interest by multiplying the savingsBalance by annualInterestRatedivided by 12 this interest should be added to savingsBalance. Provide a staticmethod modifyInterestRate th
+Provide a staticmethod modifyInterestRate that sets the annualInterestRate to a new value.Write a program to test class SavingsAccount. Instantiate two savingsAccountobjects, saver1 and saver2, with balances of $2000.00 and $3000.00, respectively.Set annualInterestRate to 4%, then calculate the monthly interest and print thenew balances for both savers. Then set the annualInterestRate to 5%, calculate the next month’s interest and print the new balances for both savers.
+program:
+class SavingsAccount{
+    static float AnnualIntrestrate = (float)4;
+    private float SavingsBalance;
+    void caluclateMonthlyIntrest(){
+        float intrest = ((SavingsBalance*AnnualIntrestrate)/16);
+        SavingsBalance+=intrest;
+        System.out.println("balance is " + SavingsBalance);
+    }
+    static void  ModifyIntrestrate(float rate){
+        AnnualIntrestrate=rate;
+    }
+    public SavingsAccount(float balance){
+        SavingsBalance=balance;
+        
+    }
+    
+}
+public class Main
+{
+public static void main(String[] args) {
+SavingsAccount s1 = new SavingsAccount(5000.0f);
+SavingsAccount s2 = new SavingsAccount(1000.0f);
+s1.caluclateMonthlyIntrest();
+s2.caluclateMonthlyIntrest();
+SavingsAccount.ModifyIntrestrate(4.0f);
+s1.caluclateMonthlyIntrest();
+s2.caluclateMonthlyIntrest();
+
+
+
+
+        
+        
+}
+}
+output:balance is 7812.5                                                                                                            
+balance is 1562.5  
+
+
+4.write a java program create a class callled book and initialize the respective details of book using class constructor  and access them by creating objects and perform required operations.
+Program:
+import java.util.Scanner;
+class Book 
+{
+    String bookName;
+    String author;
+    String ISBN, publisher;
+    Book(String title, String auth, String isbn, String publish)
+    {
+        bookName = title;
+        author =auth;
+        this.ISBN = isbn;
+        publisher = publish;
+    }
+    void setTitle(String name)
+    {  bookName = name; }
+    void setAuthor(String auth)
+    { author = auth; }
+    void setISBN(String s) 
+    { ISBN = s; }
+    void setPublisher(String p)
+    {
+        publisher = p;
+    }
+    String getTitle()
+    {  return bookName; }
+    String getAuthor() 
+    { return author; }
+    String getISBN() 
+     { return ISBN; }
+     String getPublisher() 
+     { return publisher; }
+    String bookInfo()
+    {
+        String info = bookName + " " + author + " " + ISBN + " " + publisher;
+        return info;
+        
+    }
+}
+  
+public class Main
+{
+public static void main(String[] args) {
+    Book b[] = new Book[30];
+    b[0] = new Book("Programming in Java", "naga", "63016", "Wiley");
+    String title, auth, isbn, publisher;
+    Scanner s = new Scanner(System.in);
+    for (int i =1; i < 3; i++)
+     {
+         title = s.next();
+         auth = s.next();
+         isbn = s.next();
+         publisher = s.next();
+         b[i] = new Book(title,auth,isbn,publisher);
+     }
+    b[2].setTitle("Software Testing");
+    System.out.println(b[5].getTitle());
+    String info;
+    for (int i =0; i<3; i++) {
+        info = b[i].bookInfo();
+        System.out.println(info);
+    }
+
+
+}
+5)Create a class called Employee that includes three pieces of information as instance variables—a first name (typeString), a last name (typeString) and a monthly salary (double). Your class should have a constructor that initializes the three instance variables. Provide a set and a get method for each instance variable. If the monthly salary is not positive, set it to 0.0. Write a test application named EmployeeTest that demonstrates class Employee’s capabilities. Create two Employee objects and Create two Employee objects and display each object’s yearly salary. Then give each Employee a 10% raise and display each Employee’s yearly salary again.
+ program:
+class Employee{
+    String firstname;
+    String lastname;
+    double salary;
+    public Employee(String fn,String ln,double sal){
+        firstname = fn;
+        lastname = ln;
+        if(salary<0){
+            salary=0.0;
+        }
+        else{
+            salary = sal;
+        }
+    }
+    void setFn(String fn){
+        firstname = fn;
+    }
+    void setLn(String ln){
+        lastname=ln;
+    }
+    void setSal(double sal){
+        if(salary<0){
+            salary=0.0;
+        }
+        else{
+            salary = sal;
+        }
+    }
+    String getFn(){
+        return firstname;
+    }
+    String getLn(){
+        return lastname;
+    }
+    double getsal(){
+        return salary;
+    }
+    double sal(int percent){
+        salary+=salary*((percent/1000.0));
+        return salary;
+    }
+   
+}
+public class Main
+{
+	public static void main(String[] args) {
+		Employee em1 = new Employee("naga","reddy",90000);
+		Employee em2 = new Employee("siva","reddy",95000);
+		
+		System.out.println(em1.getFn() + em1.getLn() +em1.getsal());
+		System.out.println(em2.getFn() + em2.getLn() +em2.getsal());
+		double s = em1.sal(11);
+		System.out.println("Annual salary is " + (s*12));
+		double s2 = em2.sal(17);
+		System.out.println("Annual salary is " + (s2*12));
+	}
+}
+
+output:nagareddy90000.0                                                                                                             
+sivareddy95000.0                                                                                                             
+Annual salary is 1091880.0                                                                                                   
+Annual salary is 1159380.0                                                                                                   
+ 
+6.Create a class called Invoice that a hardware store might use to represent an invoice for an item sold at the store. An Invoice should include four pieces of information as instance variables‐a part number(type String),a part description(type String),a quantity of the item being purchased (type int) and a price per item (double). Your class should have a constructor that initializes the four instance variables. Provide a set and a get method for each instance variable. In addition, provide a method named getInvoice Amount that calculates the invoice amount (i.e., multiplies the quantity by the price per item), then returns the amount as a double value. If the quantity is not positive, it should be set to 0. If the price per item is not positive, it should be set to 0.0. Write a test application named InvoiceTest that demonstrates class Invoice’s capabilities.
+program:
+ class Invoice{
+    String partnumber;
+    String partdescription;
+    double price;
+    int quantity;
+    public Invoice(String pno,String pds,double rate,int qu){
+        partnumber = pno;
+        partdescription = pds;
+        price = rate;
+        quantity = qu;
+        if(price<0){
+            price=0.0;
+        }
+        else{
+            price = rate;
+        }
+        if(quantity<0){
+            quantity=0;
+        }
+        else{
+            quantity = qu;
+        }
+    }
+    void setPno(String pno){
+        partnumber = pno;
+    }
+    void setPds(String pds){
+        partdescription = pds;
+    }
+    void setPrice(double rate){
+        if(price<0){
+            price=0.0;
+        }
+        else{
+            price = rate;
+        }
+    }
+    void setQu(int qu){
+        if(quantity<0){
+            quantity=0;
+        }
+        else{
+            quantity = qu;
+        }
+    }
+    String getPno(){
+        return partnumber;
+    }
+    String getPds(){
+        return partdescription;
+    }
+    double getPrice(){
+        return price;
+    }
+    int getQuant(){
+        return quantity;
+    }
+    double getInvoice(){
+        return (price*quantity);
+    }
+    
+}
+public class Main
+{
+	public static void main(String[] args) {
+		Invoice i = new Invoice("class30","key board",900,8);
+		System.out.println("the invoice is " + i.getPno() + " "+i.getPds()+" "+i.getPrice()+" "+i.getQuant());
+		double bill= i.getInvoice();
+		System.out.println("the net amount is "+ bill );
+		
+	}
+}
+output: 
+the invoice is class30 key board 900.0 8                                                                                     
+the net amount is 7200.0                                                                                                     
+                        
+
+
+             
+
+
+
+
+
+
+
+
+
+                                                                                                   
+            
