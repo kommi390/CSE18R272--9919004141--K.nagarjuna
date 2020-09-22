@@ -1,0 +1,214 @@
+
+    NAME:KOMMIREDDY NAGARJUNA REDDY
+     REG NO:9919004141 
+     SUBJECT:JAVA PROGRAMMMING
+      DATE:22-9-2020
+
+
+
+
+1.) Develop a java application with Employee class with Emp_name, Emp_id, Address, Mail_id, 
+Mobile_no as members. Inherit the classes, Programmer, Assistant Professor, Associate 
+Professor and Professor from employee class. Add Basic Pay (BP) as the member of all the 
+inherited classes with 97% of BP as DA, 10 % of BP as HRA, 12% of BP as PF, 0.1% of BP for 
+staff club fund. Generate pay slips for the employees with their gross and net salary
+source code:
+
+class Employee{
+    String Emp_name, Emp_id,Address, Mail_id;
+    long Mob_no;
+    Employee(String name,String id,String addr,String mail,long phn){
+        Emp_name=name;
+        Emp_id=id;
+        Address=addr;
+        Mail_id=mail;
+        Mob_no=phn;
+    }
+
+}
+class Assistant_professor extends Employee{
+    int bp;
+    Assistant_professor(String name,String id,String addr,String mail,long phn,int pay){
+        super(name,id,addr,mail,phn);
+        bp = pay;
+    }
+    void payslip(){
+        float da = bp*(0.97f);
+        float hra = bp*(0.10f);
+        float pf = bp*(0.12f);
+        float sc = bp*(0.001f);
+        float net_salary = (da + hra)- (pf+sc);
+        float gross_salary = (da+hra);
+        System.out.println("the gross salary is"+ gross_salary);
+        System.out.println("the net salary is"+ net_salary);
+    }
+}
+class Associate_professor extends Employee{
+    int bp;
+    Associate_professor(String name,String id,String addr,String mail,long phn,int pay){
+        super(name,id,addr,mail,phn);
+        bp = pay;
+    }
+    void payslip(){
+        float da = bp*(0.97f);
+        float hra = bp*(0.10f);
+        float pf = bp*(0.12f);
+        float sc = bp*(0.001f);
+        float net_salary = (da + hra)- (pf+sc);
+        float gross_salary = (da+hra);
+        System.out.println("the gross salary is"+ gross_salary);
+        System.out.println("the net salary is"+ net_salary);
+    }
+}
+class Professor extends Employee{
+    int bp;
+    Professor(String name,String id,String addr,String mail,int phn,int pay){
+        super(name,id,addr,mail,phn);
+        bp = pay;
+    }
+    void payslip(){
+        float da = bp*(0.97f);
+        float hra = bp*(0.10f);
+        float pf = bp*(0.12f);
+        float sc = bp*(0.001f);
+        float net_salary = (da + hra)- (pf+sc);
+        float gross_salary = (da+hra);
+        System.out.println("the gross salary is"+ gross_salary);
+        System.out.println("the net salary is"+ net_salary);
+    }
+}
+public class Main
+{
+	public static void main(String[] args) {
+		
+		Assistant_professor ap = new Assistant_professor("naga","4141","ong","nagarjuna78@gmail.com",90887,88800);
+		Associate_professor ap1 = new Associate_professor("kishore","4142","ong","sivah@gmail.com",99971,63000);
+		Professor p = new Professor("jagan","4149","ong","jagan@gmail.com",63021,98500);
+		ap.payslip();
+		ap1.payslip();
+		p.payslip();
+	}
+}
+
+2.) Create a Circle class with following members. A data member that stores the radius of a circle A 
+constructor function with an argument that initializes the radius A function that computes and 
+returns are of a circle Create two derived classes Sector and Segment that inherit the Circle class. 
+Both classes inherit radius and the function that returns the circle&#39;s area from Circle. In 
+addition to the members inherited from Circle, Sector and Segment have some specific members as 
+follows:
+Sector
+A data member that stores the control angle of a sector(in radians) A constructor function with 
+arguments that initialize radius and angle A function that computes and returns the area of a sector 
+Segment A data member that stores the angle of a segment in a circle A constructor function with 
+arguments that initialize radius and angle A function that computes and returns the area of a 
+segment Create the main () function to instantiate an object of each class and then call appropriate 
+member functions to compute and return the area of a circle, sector and segment.
+Note :Area_of_circle =π r 2
+Area_of_Sector=r 2 θ/2
+Area_of_segment= ½ * r 2 ( θ – sin θ)
+
+
+
+source code:
+
+import java.lang.Math; 
+class Circle{
+    float radius;
+    public Circle(float r){
+        radius = r;
+    }
+    float cirArea(){
+        return (3.14f*radius*radius);
+    }
+}
+class Sector extends Circle{
+    float angle;
+    public Sector(float r,float ang){
+        super(r);
+        angle = ang;
+    }
+    float secArea(){
+        return (0.5f*(radius*radius)*angle);
+    }
+}
+class Segment extends Circle{
+    float angle;
+    public Segment(float r,float ang){
+        super(r);
+        angle = ang;
+    }
+    float segArea(){
+        return ((float)(0.5f*(radius*radius)*(angle-Math.sin(angle))));
+    }
+}
+
+    
+
+public class Main
+{
+	public static void main(String[] args) {
+		Circle c = new Circle(9);
+		float cir = c.cirArea();
+		System.out.println("the circle area is "+ cir);
+		Sector s = new Sector(8,45);
+		float sec = s.secArea();
+		System.out.println("the sector area is "+ sec);
+		Segment sg = new Segment(76,85);
+		float seg = sg.segArea();
+		System.out.println("the segment area is "+ seg);
+		
+		
+		
+	}
+}
+
+
+3.) Create three classes Student, Test and Result classes. The student class contains student relevant 
+information. Test class contains marks for five subjects. The result class contains Total and average 
+of the marks obtained in five subjects. Inherit the properties of Student and Test class details in 
+Result class through multilevel inheritances.
+
+SOURCE CODE
+
+class Figure{
+ double dim1,dim2
+ Figure(double a,double b){
+ dim1 = a;
+ dim2 = b;
+ }
+ double area(){
+ System.out.println("figure class");
+ return 0;
+ }
+}
+class Rectangle extends Figure{
+ Rectangle(double a,double b){
+ super(a,b);
+ }
+ double area(){
+ return dim1*dim2;
+ }
+}
+class Triangle extends Figure{
+ Triangle(double a,double b){
+ super(a,b);
+ }
+ double area(){
+ return (0.5*dim1*dim2);
+ }
+}
+public class Area
+{
+public static void main(String[] args) {
+ Figure f = new Figure(88,10);
+ Rectangle r = new Rectangle(9,16);
+ Triangle t= new Triangle(6,19);
+ Figure superref;
+ superref = r;
+ System.out.println("area is "+ superref.area());
+ superref = t;
+ System.out.println("area is "+ superref.area());
+ superref = f;
+ System.out.println("area is "+ superref.area());
+}
+}
