@@ -1,0 +1,167 @@
+
+1)
+
+source code:
+
+interface Shape{
+    double pi =3.14;
+    public double perimeter();
+    public double area();
+}
+
+class Circle implements Shape{
+    float radius;
+    Circle(float r){
+        radius = r;
+    }
+    public double area(){
+        return pi*radius*radius;
+    }
+    public double perimeter(){
+        return 2*pi*radius;
+    }
+}
+class Ecllipse implements Shape{
+    float a,b;
+    Ecllipse(float a,float b){
+        this.a = a;
+        this.b=b;
+    }
+    public double perimeter(){
+        return (2*pi*Math.sqrt(a*a+b*b));
+    }
+    public double area(){
+        return pi*a*b;
+    }
+}
+public class Main
+{
+	public static void main(String[] args) {
+	    Circle c = new Circle(8.0f);
+	    Ecllipse e = new Ecllipse(6.0f,49.0f);
+	    System.out.println("area of circle  is "+ c.area());
+	    
+	    System.out.println("area of ellipse is "+ e.area());
+	    
+	    System.out.println("perimeter of circle  is "+ c.perimeter());
+	    System.out.println("perimeter of ecclipse  is "+ e.perimeter());
+}
+}
+
+
+
+
+2)  /*Design a vehicle class that contains the following properties of motor vehicles:
+Fuel tank capacity, average fuel consumption per 100 km and the distance a
+vehicle can travel on a full tank. The vehicle class should be designed as a base
+class from which the Car and Truck classes are derived. The derived classes
+should have following member functions.
+ A function that contains data for a vehicle from the user
+ A function that computes and returns the distance a vehicle can travel on a
+full tank.
+ A function that computes and returns how many times a vehicle has to be
+refueled to travel a given distance.
+Test the class in the main method.*/
+
+source code;
+
+class Vehicle{
+    int capacity;
+    float consumption, distance;
+    Vehicle(int a,float b, float c){
+        capacity=a;
+        consumption=b;
+        distance=c;
+    }
+}
+class Car extends Vehicle{
+    Car(int a, float b, float c){
+        super(a,b,c);
+    }
+    float compute_dist(){
+        float d=capacity*consumption/100;
+    	return d;
+    }
+    float compute_fuel(int d){
+    	return (distance*100)/(consumption);
+    }
+}
+class Truck extends Vehicle{
+    Truck(int a, float b, float c){
+        super(a,b,c);
+    }
+    float compute_dist(){
+        float d=capacity*consumption/100;
+    	return d;
+    }
+    float compute_fuel(int d){
+    	return (distance*100)/(consumption);
+    }
+}
+
+public class Vehicle_main
+{
+	public static void main(String[] args) {
+	    Car c = new Car(54,18.0f,10.0f);
+	    System.out.println("Distance covered by Car: "+ c.compute_dist()+" km\n"+"Fuel Consumed by Car: "+c.compute_fuel(5)+" litres");
+		Truck t= new Truck(85,35.0f,90.0f);
+		System.out.println("\nDistance covered by Truck: "+ t.compute_dist()+" km\n"+"Fuel Consumed by Truck: "+t.compute_fuel(15)+" litres \n");
+	}
+}
+
+
+3)
+
+SOURCE CODE
+
+
+[5:01 PM, 9/23/2020] +91 94864 88642: class Student
+{
+    int regno;
+    String name, dept;
+    Student(int rno, String name, String dept)
+    {
+        regno = rno; this.name=name; this.dept =dept;
+    }
+    void display()
+    {
+        System.out.print(regno + " "+ name + " "+ dept);
+    }
+}
+
+class Test extends Student
+{
+    int marks[];
+    Test(int r, String n, String d, int m[])
+    {
+        super(r,n,d);
+        marks = m;
+    }
+}
+class Result extends Test
+{
+  Result(int r, String n, String d, int m[])
+    {
+        super(r,n,d,m);
+    }
+    void printResult() {
+        display();
+        int sum = 0;
+        for (int i =0; i< marks.length; i++)
+         sum += marks[i];
+        System.out.println("  Total Marks: "+ sum + " Average = " + (sum/5.0) );
+    }
+}
+
+public class TestMain
+{
+    public static void main(String arg[])
+    {
+        int mark[]= {56,78,78,79,37};
+        Result r = new Result(4141, "nagarjuna", "CSE", mark);
+        r.printResult();
+        int mark2[] = {96,68,96,69,97};
+        Result r2 = new Result(4149,"jagan", "CSE", mark2);
+        r2.printResult();
+    }
+}
